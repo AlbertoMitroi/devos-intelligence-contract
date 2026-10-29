@@ -14,5 +14,7 @@
 ## C3 (D20): destinations from configuration
 
 - **Context:** topics, queues and base addresses usually live in configuration; without them messages and HTTP calls cannot be linked across repositories.
-- **Choice (proposed):** store a configuration value only when an adapter uses it as a destination and neither key nor value is flagged secret.
-- **Status:** proposed, needs the owner's confirmation (it relaxes rule 1.4.6 of the dotnet prompt).
+- **Choice:** store a configuration value only when an adapter uses it as a destination (topic, queue, exchange, base address, hub route) and neither key nor value is flagged secret; it goes into that observation's `destination` or `baseAddress` with `nameSource: configuration`. Every other configuration value stays out.
+- **Reason:** without destinations, messages and HTTP calls cannot be linked across repositories.
+- **Revisit:** if a destination value is found to carry a secret that the secret flag missed: tighten the flag, never drop the check.
+- **Status:** accepted by the owner on 2026-10-29 (deviation from rule 1.4.6 of the dotnet prompt, recorded in every engine's DECISIONS.md when implemented).

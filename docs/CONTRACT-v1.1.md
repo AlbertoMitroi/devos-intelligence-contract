@@ -50,9 +50,9 @@ Strictly additive to [v1.0](CONTRACT-v1.0.md): a v1.0 consumer reads a v1.1 gene
 | `implemented_by_package` | federation only: a `dotnet:pkg:` or `ts:pkg:` entity to the source entity in the repository that produces the package; carries `versionMatch` (`exact`, `different`, `unknown`) |
 | `pushes_to` | `realtime.send` → `realtime.subscribe` |
 
-## Configuration values used as destinations (proposed decision D20)
+## Configuration values used as destinations (decision D20, accepted)
 
-v1.0 never stores configuration values. v1.1 proposes one exception: a value that an adapter uses as a destination (topic, queue, exchange, base address, hub route) is stored in that observation's `destination` or `baseAddress`, with `nameSource: configuration`, and only when the key and the value are not flagged secret. Every other value stays out. Status: **proposed, waiting for the owner's confirmation**.
+v1.0 never stores configuration values. v1.1 proposes one exception: a value that an adapter uses as a destination (topic, queue, exchange, base address, hub route) is stored in that observation's `destination` or `baseAddress`, with `nameSource: configuration`, and only when the key and the value are not flagged secret. Every other value stays out. Status: **accepted by the owner on 2026-10-29**.
 
 ## System generation (federation)
 
