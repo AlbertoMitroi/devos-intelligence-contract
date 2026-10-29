@@ -54,6 +54,19 @@ Strictly additive to [v1.0](CONTRACT-v1.0.md): a v1.0 consumer reads a v1.1 gene
 
 v1.0 never stores configuration values. v1.1 proposes one exception: a value that an adapter uses as a destination (topic, queue, exchange, base address, hub route) is stored in that observation's `destination` or `baseAddress`, with `nameSource: configuration`, and only when the key and the value are not flagged secret. Every other value stays out. Status: **accepted by the owner on 2026-10-29**.
 
+## Schema changes (`schema/v1/`, all optional)
+
+The v1 schema files describe both minors; every change only widens what validates, so every v1.0 generation still validates.
+
+| File | Change |
+|---|---|
+| `entity.schema.json` | `id` pattern `^(dotnet|ts):` |
+| `relation.schema.json` | `usage` adds `decorator`, `import` |
+| `link.schema.json` | `via` adds `inprocess` (`dispatches_to` from `inprocess.send`), `workflow` (`workflow.node` to `workflow.handler`), `realtime` (`pushes_to`), `ui` (TypeScript UI links), `package` (`implemented_by_package`) |
+| `project.schema.json` | optional `language`, `packageId`, `packageVersion`, `isPackable`, `npmName`, `npmVersion` |
+| `manifest.schema.json` | `roslyn` and `sdks` are no longer required (.NET engines keep emitting them); optional `toolchain` (`name`, `version`) for engines without Roslyn |
+| `analysis-context.schema.json` | `targetFramework` and `preprocessorSymbols` are no longer required (.NET engines keep emitting them) |
+
 ## System generation (federation)
 
 A system generation has the v1.0 layout plus `inputs.ndjson` (one record per input generation: repository, commit, engine, image digest, manifest sha256, schema version) and cross-repository records whose ids are prefixed by the input they come from (`{inputId}/{recordId}`) so records never collide. Links across inputs use the kinds above and v1.0's `consumes_contract`, `configured_route`, `possible_communication`.
