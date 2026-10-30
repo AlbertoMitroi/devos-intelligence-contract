@@ -1,6 +1,6 @@
-# Contract v1.1 (draft)
+# Contract v1.1
 
-Strictly additive to [v1.0](CONTRACT-v1.0.md): a v1.0 consumer reads a v1.1 generation by the compatibility rules (unknown fields and kinds are kept, not interpreted). No new required capability. `schemaVersion` becomes `1.1` when an engine emits any of the items below.
+Published with `v1.2.0`; [v1.2](CONTRACT-v1.2.md) adds to it. Strictly additive to [v1.0](CONTRACT-v1.0.md): a v1.0 consumer reads a v1.1 generation by the compatibility rules (unknown fields and kinds are kept, not interpreted). No new required capability. `schemaVersion` becomes `1.1` when an engine emits any of the items below.
 
 ## Identity
 
@@ -69,4 +69,4 @@ The v1 schema files describe both minors; every change only widens what validate
 
 ## System generation (federation)
 
-A system generation has the v1.0 layout plus `inputs.ndjson` (one record per input generation: repository, commit, engine, image digest, manifest sha256, schema version) and cross-repository records whose ids are prefixed by the input they come from (`{inputId}/{recordId}`) so records never collide. Links across inputs use the kinds above and v1.0's `consumes_contract`, `configured_route`, `possible_communication`.
+Superseded by the system section of [v1.2](CONTRACT-v1.2.md). A system generation has the v1.0 layout plus `inputs.ndjson` (one record per input generation: repository, commit, engine, image digest, manifest sha256, schema version) and cross-repository records whose ids are prefixed by the input they come from (`{inputId}/{recordId}`) so records never collide. Links across inputs use the kinds above and v1.0's `consumes_contract`, `configured_route`, `possible_communication`.

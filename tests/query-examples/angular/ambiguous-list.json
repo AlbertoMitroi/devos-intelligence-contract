@@ -1,0 +1,1 @@
+[{"id":"ts:.:src/app/features/assessments/assessments.service#AssessmentsService.list","kind":"method","name":"list","signature":"list(): Observable<FlowReadModel[]>"},{"id":"ts:.:src/app/features/quotes/quotes.service#QuotesService.list","kind":"method","name":"list","signature":"list(): Observable<FlowReadModel[]>"}]
